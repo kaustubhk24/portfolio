@@ -16,7 +16,11 @@
         body {
             overflow: hidden;
             height: 100vh;
-            background: linear-gradient(135deg, #000428, #004e92);
+            /* background: linear-gradient(135deg, #000428, #004e92); */
+            background-image:url(bg.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+
         }
 
         /* Login Screen */
@@ -32,11 +36,12 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            background-image: 
+            /* background-image: 
                 radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 2px),
-                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); */
             background-size: 40px 40px, 20px 20px;
             background-position: 0 0, 10px 10px;
+            
         }
 
         .login-container {
@@ -222,19 +227,16 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 98%;
             height: 48px;
             backdrop-filter: blur(70px);
             -webkit-backdrop-filter: blur(70px);
             display: flex;
             align-items: center;
-            padding: 0 10px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(36, 36, 36, 0.75);
-            margin-bottom: 8px;
-            border-radius: 8px;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
         }
 
         .taskbar-start {
@@ -331,12 +333,11 @@
 
         .search-box i {
             margin-right: 10px;
-        }
-
-        .taskbar-right {
+        }        .taskbar-right {
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-left: auto;
         }
 
         .task-icon {
@@ -382,7 +383,7 @@
             left: 10px;
             width: 500px;
             height: 600px;
-            background:#3b82f6;
+            background:black;
             backdrop-filter: blur(20px);
             border-radius: 10px;
             display: none;
@@ -938,12 +939,27 @@
             </div>
         </div>
         
-        <!-- Taskbar -->
-        <div class="taskbar">
+        <!-- Taskbar -->        <div class="taskbar">
             <div class="taskbar-start">
                 <div class="start-btn" id="start-btn">
                     <i class="fab fa-microsoft"></i>
                 </div>
+            </div>
+
+            <div class="search-box" id="search-box" style="position:relative;margin:0 15px;width:300px;">
+                <i class="fas fa-search"></i>
+                <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search portfolio..."
+                        style="background:transparent;border:none;outline:none;color:white;width:90%;font-size:14px;"
+                        autocomplete="off"
+                    />
+                    <div id="search-suggestions"
+                         style="position:absolute;bottom:36px;left:0;width:100%;background:#222;color:white;border-radius:5px 5px 0 0;z-index:2000;display:none;max-height:220px;overflow-y:auto;">
+                    </div>
+                </div>
+
                 <div class="taskbar-apps">
                     <div class="taskbar-app" onclick="openApp('about')">
                         <i class="fas fa-user"></i>
@@ -955,8 +971,8 @@
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <div class="taskbar-app" onclick="openApp('servicenow')">
-    <i class="fas fa-cloud"></i>
-</div>
+                        <i class="fas fa-cloud"></i>
+                    </div>
                     <div class="taskbar-app" onclick="openApp('certifications')">
                         <i class="fas fa-certificate"></i>
                     </div>
@@ -964,22 +980,6 @@
                         <i class="fas fa-blog"></i>
                     </div>
                 </div>
-            </div>
-            
-            <div class="taskbar-center">
-                <div class="search-box" id="search-box" style="position:relative;">
-                    <i class="fas fa-search"></i>
-                    <input
-                        type="text"
-                        id="search-input"
-                        placeholder="Search portfolio..."
-                        style="background:transparent;border:none;outline:none;color:white;width:90%;font-size:14px;"
-                        autocomplete="off"
-                    />
-<div id="search-suggestions"
-     style="position:absolute;bottom:36px;left:0;width:100%;background:#222;color:white;border-radius:5px 5px 0 0;z-index:2000;display:none;max-height:220px;overflow-y:auto;">
-</div>                </div>
-            </div>
             
             <div class="taskbar-right">
                 <div class="task-icon">
@@ -1039,17 +1039,13 @@
                         <i class="fas fa-envelope"></i>
                         <span>Contact</span>
                     </div>
-                    <div class="pinned-app">
+                    <!-- <div class="pinned-app">
                         <i class="fas fa-file-pdf"></i>
                         <span>Resume</span>
-                    </div>
+                    </div> -->
                     <div class="pinned-app">
                         <i class="fas fa-globe"></i>
                         <span>Portfolio</span>
-                    </div>
-                    <div class="pinned-app">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
                     </div>
                     <div class="pinned-app" onclick="openApp('certifications')">
                         <i class="fas fa-certificate"></i>
@@ -1065,19 +1061,19 @@
                     <div class="recommended-title">Recommended</div>
                     <div class="recommended-item">
                         <i class="fas fa-file-pdf"></i>
-                        <span>Resume.pdf</span>
+                        <span><a target="_blank" href="Kaustubh Kulkarni - ServiceNow Developer.pdf">Download Resume</a></span>
                     </div>
                     <div class="recommended-item">
                         <i class="fas fa-globe"></i>
-                        <span>Portfolio Website</span>
+                        <span><a href="#">Portfolio Website</a></span>
                     </div>
                     <div class="recommended-item">
                         <i class="fab fa-github"></i>
-                        <span>GitHub Profile</span>
+                        <span><a target="_blank" href="https://github.com/kaustubhk24">GitHub Profile</a></span>
                     </div>
                     <div class="recommended-item">
                         <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
+                        <span><a target="_blank" href="https://linkedin.com/in/kaustubhk24">GitHub Profile</a></span>
                     </div>
                 </div>
             </div>
@@ -1087,9 +1083,7 @@
                     <i class="fas fa-chevron-right"></i>
                 </div>
                 <div class="power-options">
-                    <div class="power-btn">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    
                     <div class="power-btn">
                         <i class="fas fa-power-off"></i>
                     </div>
@@ -1119,8 +1113,9 @@
         </div>
         <div class="window-body">            <div class="app-header">
                 <img src="https://www.gravatar.com/avatar/b76fcfc82fc2e8fdc8075636f1735f61?s=400" alt="Profile Photo" style="width:150px;height:150px;border-radius:50%;margin-bottom:20px;box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-                <h1 class="app-title">About Kaustubh</h1>
+                <h1 class="app-title">About Me</h1>
                 <p class="app-subtitle">Sr. Infra Developer | ServiceNow Developer | CSA | CAD | CIS-VR</p>
+                <a target="_blank" href="Kaustubh Kulkarni - ServiceNow Developer.pdf">Download Resume</a>
             </div>
             
             <div class="stats-grid">
@@ -1696,7 +1691,7 @@ Responsible to create service catalog, order guide, record producer.
                     <p style="color: #666;">
                         <strong>Maharashtra State Board</strong><br>
                         Jawaharlal Vidyalaya Kedgaon <br>
-                        <span style="color: #888;">2016-2019</span>
+                        <span style="color: #888;">2015-2016</span>
                     </p>
                 </div>
 
@@ -1705,7 +1700,7 @@ Responsible to create service catalog, order guide, record producer.
                     <p style="color: #666;">
                         <strong>Maharashtra State Board</strong><br>
                         Jaymalhar Vidyalaya Delwadi<br>
-                        <span style="color: #888;">2016-2019</span>
+                        <span style="color: #888;">2013-2014</span>
                     </p>
                 </div>
             </div>
